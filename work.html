@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-45CZGQCL2F"></script>
+  <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-45CZGQCL2F');</script>
+  <meta charset="UTF-8"/><meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+  <link rel="icon" type="image/svg+xml" href="logo.svg">
+  <title>Portfolio — ASSIST Community Design Center</title>
+  <link rel="stylesheet" href="shared.css"/>
+  <style>
+    .portfolio-header { max-width:1440px; margin:0 auto; padding:48px 72px 0; display:flex; align-items:center; justify-content:space-between; }
+    .portfolio-title { font-size:16px; font-weight:700; color:var(--charcoal); }
+    .filter-btn { display:flex; align-items:center; gap:8px; font-size:16px; font-weight:600; color:var(--charcoal); background:none; border:2px solid var(--clay); border-radius:6px; padding:10px 16px; cursor:pointer; font-family:inherit; transition:border-color .2s; position:relative; }
+    .filter-btn:hover { border-color:var(--assist-blue); color:var(--assist-blue); }
+    .filter-btn.open svg { transform:rotate(180deg); }
+    .filter-btn svg { transition:transform .2s; }
+    .filter-menu { position:absolute; top:calc(100% + 4px); right:0; background:white; border:1px solid var(--sand); border-radius:8px; box-shadow:0 8px 24px rgba(0,0,0,.1); min-width:200px; padding:6px 0; z-index:100; display:none; }
+    .filter-menu.open { display:block; }
+    .filter-menu button { display:block; width:100%; text-align:left; padding:10px 16px; font-size:15px; font-family:inherit; background:none; border:none; cursor:pointer; color:var(--charcoal); transition:background .15s; }
+    .filter-menu button:hover { background:var(--stone); }
+    .filter-menu button.active { color:var(--assist-blue); font-weight:600; }
+    .portfolio-divider { max-width:1440px; margin:12px 72px 0; height:1px; background:var(--assist-blue); }
+    .portfolio-section { max-width:1440px; margin:0 auto; padding:32px 72px 80px; display:flex; flex-direction:column; }
+    @media(max-width:1024px) { .portfolio-header { padding:40px 40px 0; } .portfolio-divider { margin:12px 40px 0; } .portfolio-section { padding:24px 40px 60px; } }
+    @media(max-width:768px) { .portfolio-header { padding:20px 16px 0; } .portfolio-divider { margin:8px 16px 0; } .portfolio-section { padding:16px 16px 48px; } }
+  </style>
+</head>
+<body>
+<script src="shared.js"></script>
+<script>renderNav('Work');</script>
+
+<div class="portfolio-header">
+  <p class="portfolio-title">Projects</p>
+  <div style="position:relative;">
+    <button class="filter-btn" id="filterBtn" onclick="toggleFilter()">
+      <span id="filterLabel">Filter: All</span>
+      <svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M2 4L6 8L10 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+    </button>
+    <div class="filter-menu" id="filterMenu">
+      <button class="active" onclick="setFilter('All',this)">All</button>
+      <button onclick="setFilter('Emergency Home Repair',this)">Emergency Home Repair</button>
+      <button onclick="setFilter('Community Design',this)">Community Design</button>
+      <button onclick="setFilter('Accessibility',this)">Accessibility</button>
+    </div>
+  </div>
+</div>
+<div class="portfolio-divider"></div>
+<div class="portfolio-section" id="portfolioSection"></div>
+
+<script src="projects.js"></script>
+<script>
+  let currentFilter = 'All';
+
+  function toggleFilter() {
+    document.getElementById('filterBtn').classList.toggle('open');
+    document.getElementById('filterMenu').classList.toggle('open');
+  }
+
+  document.addEventListener('click', function(e) {
+    const btn = document.getElementById('filterBtn');
+    const menu = document.getElementById('filterMenu');
+    if (btn && !btn.contains(e.target)) { btn.classList.remove('open'); menu.classList.remove('open'); }
+  });
+
+  function setFilter(filter, el) {
+    currentFilter = filter;
+    document.getElementById('filterLabel').textContent = 'Filter: ' + filter;
+    document.querySelectorAll('#filterMenu button').forEach(b => b.classList.remove('active'));
+    el.classList.add('active');
+    document.getElementById('filterBtn').classList.remove('open');
+    document.getElementById('filterMenu').classList.remove('open');
+    buildGrid();
+  }
+
+  function buildGrid() {
+    portfolioBuildGrid({ containerId:'portfolioSection', filter:currentFilter, namespace:'work' });
+  }
+
+  buildGrid();
+  let lastCols = portfolioGetCols();
+  window.addEventListener('resize', () => {
+    const c = portfolioGetCols();
+    if (c !== lastCols) { lastCols = c; buildGrid(); }
+  });
+</script>
+
+<script>renderFooter();</script>
+</body>
+</html>

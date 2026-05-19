@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-45CZGQCL2F"></script>
+  <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-45CZGQCL2F');</script>
+  <meta charset="UTF-8"/><meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+  <link rel="icon" type="image/svg+xml" href="logo.svg">
+  <title>Accessibility — ASSIST Community Design Center</title>
+  <link rel="stylesheet" href="shared.css"/>
+  <style>
+    .page-hero { display:grid; grid-template-columns:1fr 1fr; max-width:1440px; margin:0 auto; padding-left:72px; min-height:514px; align-items:center; }
+    .hero-content { padding:80px 64px 80px 0; display:flex; flex-direction:column; gap:20px; }
+    .page-heading { font-size:48px; font-weight:700; line-height:56px; letter-spacing:-1px; color:var(--graphite); }
+    .page-sub { font-size:12px; font-weight:600; letter-spacing:.96px; text-transform:uppercase; color:var(--charcoal); margin-top:6px; }
+    .page-para { font-size:18px; line-height:32px; color:var(--charcoal); opacity:.7; width:557px; max-width:100%; }
+    .hero-img { overflow:hidden; align-self:stretch; }
+    .hero-img img { width:100%; height:100%; object-fit:cover; display:block; }
+    .detail-wrap { max-width:1296px; margin:0 auto; padding:0 72px 80px; }
+    .detail-block { padding:32px 0; border-bottom:1px solid var(--assist-blue); }
+    .detail-block:last-child { border-bottom:none; }
+    .detail-title { font-size:16px; font-weight:700; color:var(--charcoal); margin-bottom:20px; }
+    .prose { font-size:16px; line-height:26px; color:var(--charcoal); letter-spacing:.4px; }
+    .mods-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:24px; }
+    .mod-card { background:var(--sand); border-radius:8px; padding:24px; }
+    .mod-card h3 { font-size:16px; font-weight:700; color:var(--graphite); margin-bottom:10px; }
+    .mod-card p { font-size:15px; line-height:24px; color:var(--charcoal); opacity:.8; }
+    @media(max-width:900px) {
+      .page-hero { grid-template-columns:1fr; padding:0; }
+      .hero-content { padding:48px 24px; max-width:100%; }
+      .hero-img { min-height:260px; }
+      .page-para { width:100%; }
+      .detail-wrap { padding:0 24px 48px; }
+      .mods-grid { grid-template-columns:1fr; }
+    }
+  </style>
+</head>
+<body>
+<script src="shared.js"></script>
+<script>renderNav('Services');</script>
+
+<section class="page-hero">
+  <div class="hero-content">
+    <div class="section-eyebrow"><span>DESIGN FOR ALL</span></div>
+    <div>
+      <h1 class="page-heading">Accessibility</h1>
+      <p class="page-sub">Aging in Place Program</p>
+    </div>
+    <p class="page-para">Preventative safety improvements help you stay in your home and reduce injury risk as you age, with a focus on fall prevention — especially on stairs and in bathrooms. ASSIST offers a free assessment to recommend modifications and provides a Homeowners Checklist to help evaluate your home's safety.</p>
+    <div class="stats-row" style="margin-top:8px;">
+      <div><div class="stat-num">150+</div><div class="stat-label">Projects</div></div>
+      <div><div class="stat-num">18</div><div class="stat-label">Years</div></div>
+    </div>
+  </div>
+  <div class="hero-img">
+    <img src="https://drive.google.com/thumbnail?id=1IKAWu5mjJSYXNf1DnkaGuhYrit_BAis0&sz=w1200" alt="Accessibility"/>
+  </div>
+</section>
+
+<div class="detail-wrap">
+  <div class="detail-block">
+    <div class="detail-title">About the Program</div>
+    <p class="prose">ASSIST's Accessibility program provides design services and modifications that allow seniors and individuals with disabilities to remain safely in their homes. We believe aging in place is a right, and that thoughtful design can make that possible for more people.</p>
+  </div>
+  <div class="detail-block">
+    <div class="detail-title">Modifications We Provide</div>
+    <div class="mods-grid">
+      <div class="mod-card">
+        <h3>Bathroom Safety</h3>
+        <p>Grab bars, walk-in shower conversions, raised toilet seats, non-slip flooring, and accessible layouts that reduce fall risk in the highest-risk room of the home.</p>
+      </div>
+      <div class="mod-card">
+        <h3>Stair &amp; Ramp Access</h3>
+        <p>Handrail installation, stair lifts, exterior ramps, and threshold modifications that make entering and moving through the home safer and easier.</p>
+      </div>
+      <div class="mod-card">
+        <h3>Doorway &amp; Hallway</h3>
+        <p>Widening doorways for wheelchair or walker access, lever-style door handles, and lighting improvements that increase visibility and reduce trip hazards.</p>
+      </div>
+    </div>
+  </div>
+  <div class="detail-block">
+    <div class="detail-title">Who Qualifies</div>
+    <p class="prose">Our accessibility services are available to seniors and individuals with disabilities who own their homes and meet income eligibility requirements. Priority is given to those with the most urgent safety needs.</p>
+  </div>
+</div>
+
+<div class="work-strip">
+  <div class="work-strip-inner">
+    <div class="work-strip-header">
+      <h2>Work</h2>
+      <a href="work.html" class="btn-outline" style="font-size:14px;padding:9px 18px;">View All Projects</a>
+    </div>
+    <div class="work-strip-divider"></div>
+    <div id="a11yPortfolio" style="display:flex;flex-direction:column;"></div>
+  </div>
+</div>
+
+<script src="projects.js"></script>
+<script>
+  portfolioBuildGrid({ containerId:'a11yPortfolio', filter:'Accessibility', namespace:'a11y' });
+  let a11yLastCols = portfolioGetCols();
+  window.addEventListener('resize', () => {
+    const c = portfolioGetCols();
+    if (c !== a11yLastCols) { a11yLastCols = c; portfolioBuildGrid({ containerId:'a11yPortfolio', filter:'Accessibility', namespace:'a11y' }); }
+  });
+</script>
+
+<script>renderFooter();</script>
+</body>
+</html>

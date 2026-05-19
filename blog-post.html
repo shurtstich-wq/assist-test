@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <!-- Google Analytics -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-45CZGQCL2F"></script>
+  <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-45CZGQCL2F');</script>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+  <link rel="icon" type="image/svg+xml" href="logo.svg">
+  <title>Blog Post — ASSIST Community Design Center</title>
+  <link rel="stylesheet" href="shared.css"/>
+  <style>
+    /* ── HERO IMAGE ── */
+    .post-hero {
+      width:100%; height:60vh; min-height:400px; max-height:680px;
+      background:var(--clay) center/cover no-repeat;
+      position:relative;
+    }
+    .post-hero::after {
+      content:''; position:absolute; inset:0;
+      background:linear-gradient(to bottom, transparent 50%, rgba(0,0,0,.3) 100%);
+    }
+
+    /* ── CONTENT ── */
+    main { max-width:1440px; margin:0 auto; padding:48px 72px 80px; }
+
+    .post-meta { display:flex; align-items:center; gap:16px; margin-bottom:20px; flex-wrap:wrap; }
+    .post-date { font-size:14px; font-weight:500; color:var(--bark); letter-spacing:.14px; }
+    .post-category {
+      display:inline-block; background:var(--ember); color:white;
+      font-size:12px; font-weight:600; letter-spacing:.96px; text-transform:uppercase;
+      padding:3px 12px; border-radius:4px;
+    }
+
+    .post-title {
+      font-family:'Neue Kabel',sans-serif;
+      font-size:clamp(36px,5vw,56px); font-weight:700;
+      line-height:1.1; letter-spacing:-1px;
+      color:var(--graphite); margin:0 0 16px;
+    }
+
+    .post-subtitle {
+      font-size:22px; font-weight:500; line-height:32px;
+      letter-spacing:-.24px; color:var(--charcoal);
+      margin:0 0 28px;
+    }
+
+    .post-divider { height:1px; background:var(--assist-blue); margin-bottom:36px; }
+
+    .post-body {
+      max-width:680px;
+      font-size:16px; font-weight:400; line-height:26px;
+      letter-spacing:.4px; color:var(--charcoal);
+    }
+    .post-body p + p { margin-top:18px; }
+
+    .post-divider-bottom { height:1px; background:var(--assist-blue); margin:48px 0 48px; }
+
+    /* Back link */
+    .post-back { display:inline-flex; align-items:center; gap:8px; color:var(--assist-blue); font-size:14px; font-weight:600; text-decoration:none; margin-bottom:32px; letter-spacing:.4px; }
+    .post-back:hover { text-decoration:underline; }
+    .post-back svg { width:16px; height:16px; }
+
+    /* ── RELATED POSTS ── */
+    .related-label { font-size:16px; font-weight:700; color:var(--charcoal); margin-bottom:12px; }
+    .related-divider { height:1px; background:var(--assist-blue); margin-bottom:28px; }
+    .related-grid { display:grid; grid-template-columns:repeat(4,1fr); gap:28px; }
+    .related-card { display:block; text-decoration:none; color:inherit; }
+    .related-card-img { width:100%; aspect-ratio:4/5; border-radius:6px; background:var(--clay); overflow:hidden; margin-bottom:12px; }
+    .related-card-img img { width:100%; height:100%; object-fit:cover; display:block; transition:transform .3s; }
+    .related-card:hover .related-card-img img { transform:scale(1.03); }
+    .related-card-title { font-size:18px; font-weight:500; line-height:26px; color:var(--graphite); margin:0 0 6px; }
+    .related-card-date  { font-size:13px; font-weight:500; color:var(--bark); }
+
+    @media(max-width:1024px) { main { padding:40px 40px 60px; } .related-grid { grid-template-columns:repeat(3,1fr); } }
+    @media(max-width:768px)  { main { padding:32px 20px 48px; } .related-grid { grid-template-columns:repeat(2,1fr); gap:16px; } .post-hero { height:45vh; min-height:260px; } }
+    @media(max-width:480px)  { .related-grid { grid-template-columns:1fr; } }
+  </style>
+</head>
+<body>
+<script src="shared.js"></script>
+<script src="content.js"></script>
+<script src="posts.js"></script>
+<script>renderNav('Blog');</script>
+
+<!-- Hero image -->
+<div class="post-hero" id="postHero"></div>
+
+<main>
+  <a class="post-back" href="blog.html">
+    <svg viewBox="0 0 16 16" fill="none"><path d="M10 12L6 8l4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+    All Posts
+  </a>
+
+  <div class="post-meta" id="postMeta"></div>
+  <h1 class="post-title" id="postTitle"></h1>
+  <p  class="post-subtitle" id="postSubtitle"></p>
+  <div class="post-divider" id="postDivider" style="display:none"></div>
+  <div class="post-body" id="postBody"></div>
+  <div class="post-divider-bottom"></div>
+
+  <!-- Related posts -->
+  <p class="related-label">More Posts</p>
+  <div class="related-divider"></div>
+  <div class="related-grid" id="relatedGrid"></div>
+</main>
+
+<script>
+  function formatDate(d) {
+    if (!d) return '';
+    const date = new Date(d + 'T12:00:00');
+    return date.toLocaleDateString('en-US', { month:'short', day:'numeric', year:'numeric' });
+  }
+
+  function renderPost() {
+    const params = new URLSearchParams(window.location.search);
+    const id = params.get('id');
+    if (!window.POSTS || !id) return;
+
+    const post = POSTS.find(p => p.id === id);
+    if (!post) {
+      document.getElementById('postTitle').textContent = 'Post not found';
+      return;
+    }
+
+    // Update page title
+    document.title = (post.title || 'Blog Post') + ' — ASSIST Community Design Center';
+
+    // Hero image
+    const hero = document.getElementById('postHero');
+    if (post.heroImage && post.heroImage !== 'placeholder.svg') {
+      hero.style.backgroundImage = `url('${post.heroImage}')`;
+    } else {
+      hero.style.background = 'var(--clay)';
+    }
+
+    // Meta row
+    const meta = document.getElementById('postMeta');
+    let metaHtml = '';
+    if (post.date)     metaHtml += `<span class="post-date">${formatDate(post.date)}</span>`;
+    if (post.category) metaHtml += `<span class="post-category">${post.category}</span>`;
+    meta.innerHTML = metaHtml;
+    if (!metaHtml) meta.style.display = 'none';
+
+    // Title
+    const titleEl = document.getElementById('postTitle');
+    if (post.title) titleEl.textContent = post.title;
+    else titleEl.style.display = 'none';
+
+    // Subtitle
+    const subEl = document.getElementById('postSubtitle');
+    if (post.subtitle) subEl.textContent = post.subtitle;
+    else subEl.style.display = 'none';
+
+    // Divider — only show if there's body copy
+    if (post.body) document.getElementById('postDivider').style.display = 'block';
+
+    // Body
+    const bodyEl = document.getElementById('postBody');
+    if (post.body) {
+      // Convert double newlines to paragraphs
+      bodyEl.innerHTML = post.body
+        .split(/\n\n+/)
+        .filter(p => p.trim())
+        .map(p => `<p>${p.trim().replace(/\n/g,'<br>')}</p>`)
+        .join('');
+    } else {
+      bodyEl.style.display = 'none';
+    }
+
+    // Related posts — show up to 4 other posts
+    const related = POSTS.filter(p => p.id !== id).slice(0, 4);
+    const relGrid = document.getElementById('relatedGrid');
+    if (related.length === 0) {
+      relGrid.previousElementSibling.style.display = 'none';
+      relGrid.previousElementSibling.previousElementSibling.style.display = 'none';
+      relGrid.style.display = 'none';
+    } else {
+      relGrid.innerHTML = related.map(p => `
+        <a class="related-card" href="blog-post.html?id=${p.id}">
+          <div class="related-card-img">
+            ${p.heroImage && p.heroImage !== 'placeholder.svg'
+              ? `<img src="${p.heroImage}" alt="${p.title}" loading="lazy"/>`
+              : ''}
+          </div>
+          ${p.title ? `<p class="related-card-title">${p.title}</p>` : ''}
+          ${p.date  ? `<p class="related-card-date">${formatDate(p.date)}</p>` : ''}
+        </a>`).join('');
+    }
+  }
+
+  renderPost();
+</script>
+
+<script>renderFooter(); renderFooterContent();</script>
+</body>
+</html>

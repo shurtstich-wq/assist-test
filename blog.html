@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <!-- Google Analytics -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-45CZGQCL2F"></script>
+  <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-45CZGQCL2F');</script>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+  <link rel="icon" type="image/svg+xml" href="logo.svg">
+  <title>Blog — ASSIST Community Design Center</title>
+  <link rel="stylesheet" href="shared.css"/>
+  <script src="posts.js"></script>
+  <style>
+    main { max-width:1440px; margin:0 auto; padding:48px 72px 80px; }
+
+    /* Page header */
+    .blog-header { margin-bottom:40px; }
+    .blog-header h1 { font-family:'Neue Kabel',sans-serif; font-size:48px; font-weight:700; line-height:1.1; letter-spacing:-1px; color:var(--graphite); margin:0; }
+
+    /* Grid */
+    .blog-grid { display:grid; grid-template-columns:repeat(4,1fr); gap:32px; }
+
+    /* Card */
+    .blog-card { display:block; text-decoration:none; color:inherit; }
+    .blog-card-img {
+      width:100%; aspect-ratio:4/5;
+      border-radius:6px; overflow:hidden;
+      background:var(--clay);
+      margin-bottom:16px;
+    }
+    .blog-card-img img { width:100%; height:100%; object-fit:cover; display:block; transition:transform .3s ease; }
+    .blog-card:hover .blog-card-img img { transform:scale(1.03); }
+    .blog-card-title { font-size:20px; font-weight:500; line-height:28px; letter-spacing:-.2px; color:var(--graphite); margin:0 0 8px; }
+    .blog-card-date  { font-size:13px; font-weight:500; color:var(--bark); }
+    .blog-card-cat   { display:inline-block; background:var(--ember); color:white; font-size:11px; font-weight:600; letter-spacing:.8px; text-transform:uppercase; padding:3px 10px; border-radius:4px; margin-bottom:8px; }
+
+    /* Empty state */
+    .blog-empty { color:var(--bark); padding:40px 0; font-size:16px; }
+
+    @media(max-width:1024px) { .blog-grid { grid-template-columns:repeat(3,1fr); } main { padding:40px 40px 60px; } }
+    @media(max-width:768px)  { .blog-grid { grid-template-columns:repeat(2,1fr); gap:20px; } main { padding:32px 20px 48px; } }
+    @media(max-width:480px)  { .blog-grid { grid-template-columns:1fr; } }
+  </style>
+</head>
+<body>
+<script src="shared.js"></script>
+<script src="content.js"></script>
+<script>renderNav('Blog');</script>
+
+<main>
+  <div class="blog-header">
+    <h1 id="blog-heading">Blog</h1>
+  </div>
+  <div class="blog-grid" id="blogGrid"></div>
+</main>
+
+<script>
+  // Render blog grid from POSTS array in posts.js
+  function renderBlog() {
+    const grid = document.getElementById('blogGrid');
+    const heading = document.getElementById('blog-heading');
+
+    // Allow CMS to override heading if desired
+    if (typeof SITE_CONTENT !== 'undefined' && SITE_CONTENT.blog && SITE_CONTENT.blog.heading) {
+      heading.textContent = SITE_CONTENT.blog.heading;
+    }
+
+    if (typeof POSTS === 'undefined' || POSTS.length === 0) {
+      grid.innerHTML = '<p class="blog-empty">No posts yet — check back soon.</p>';
+      return;
+    }
+
+    // Sort by date descending
+    const sorted = [...POSTS].sort((a,b) => new Date(b.date) - new Date(a.date));
+
+    grid.innerHTML = sorted.map(p => `
+      <a class="blog-card" href="blog-post.html?id=${p.id}">
+        <div class="blog-card-img">
+          ${p.heroImage && p.heroImage !== 'placeholder.svg'
+            ? `<img src="${p.heroImage}" alt="${p.title}" loading="lazy"/>`
+            : `<div style="width:100%;height:100%;background:var(--clay);display:flex;align-items:center;justify-content:center;"><span style="color:var(--bark);font-size:13px;">Photo coming soon</span></div>`}
+        </div>
+        ${p.category ? `<span class="blog-card-cat">${p.category}</span>` : ''}
+        ${p.title    ? `<p class="blog-card-title">${p.title}</p>` : ''}
+        ${p.date     ? `<p class="blog-card-date">${formatDate(p.date)}</p>` : ''}
+      </a>`).join('');
+  }
+
+  function formatDate(d) {
+    if (!d) return '';
+    const date = new Date(d + 'T12:00:00');
+    return date.toLocaleDateString('en-US', { month:'short', day:'numeric', year:'numeric' });
+  }
+
+  renderBlog();
+</script>
+
+<script>renderFooter(); renderFooterContent();</script>
+</body>
+</html>

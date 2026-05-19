@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-45CZGQCL2F"></script>
+  <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-45CZGQCL2F');</script>
+  <meta charset="UTF-8"/>
+  <link rel="icon" type="image/svg+xml" href="logo.svg">
+  <meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+  <title>ASSIST Community Design Center</title>
+  <link rel="stylesheet" href="shared.css"/>
+  <style>
+    .hero { width:100%; height:100vh; min-height:560px; display:flex; flex-direction:column; justify-content:flex-end; position:relative; overflow:hidden; }
+    .hero-bg { position:absolute; inset:0; background:url('https://drive.google.com/thumbnail?id=16F0V1ShFfBG_M3Xz-ENl03kpdCWRz4m-&sz=w1200') center/cover no-repeat; filter:brightness(.65); }
+    .hero-bg::after { content:''; position:absolute; inset:0; background:linear-gradient(to top, rgba(0,0,0,.55) 0%, transparent 55%); }
+    .hero-content { position:relative; z-index:2; padding:0 5vw 10vh; }
+    .hero-links { display:flex; flex-direction:column; }
+    .hero-link { font-size:calc((100vw - 48px) / 14); font-weight:700; line-height:1.1; letter-spacing:-1.5px; color:rgba(255,255,255,.88); text-decoration:none; font-family:'Neue Kabel','Inter',sans-serif; white-space:nowrap; display:block; transition:color .2s; }
+    .hero-link:hover { color:white; text-decoration:underline; text-underline-offset:6px; text-decoration-thickness:3px; }
+    .svc-sections { margin-top:48px; }
+    .svc-section { display:grid; grid-template-columns:1fr 1fr; width:100%; min-height:480px; margin-bottom:40px; }
+    .svc-section:last-of-type { margin-bottom:0; }
+    .svc-content { display:flex; flex-direction:column; justify-content:center; gap:16px; padding:64px 56px 64px 72px; max-width:620px; }
+    .svc-heading { font-size:40px; font-weight:700; line-height:48px; letter-spacing:-1px; color:var(--graphite); }
+    .svc-sub { font-size:11px; font-weight:600; letter-spacing:1px; text-transform:uppercase; color:var(--charcoal); margin-top:4px; }
+    .svc-para { font-size:16px; line-height:28px; color:var(--charcoal); opacity:.7; }
+    .svc-img { overflow:hidden; }
+    .svc-img img { width:100%; height:100%; object-fit:cover; display:block; }
+    @media(max-width:900px) {
+      .svc-section { grid-template-columns:1fr; margin-bottom:0; border-bottom:1px solid var(--sand); }
+      .svc-section:last-of-type { border-bottom:none; }
+      .svc-content { padding:40px 24px; max-width:100%; }
+      .svc-img { min-height:260px; }
+      .svc-heading { font-size:32px; line-height:40px; }
+      .hero-content { padding:0 24px 60px; }
+    }
+  </style>
+</head>
+<body class="hero-page">
+<script src="shared.js"></script>
+<script>renderNav('');</script>
+
+<section class="hero">
+  <div class="hero-bg"></div>
+  <div class="hero-content">
+    <div class="hero-links">
+      <a class="hero-link" href="community-design.html">Community Design</a>
+      <a class="hero-link" href="emergency-home-repair.html">Emergency Home Repair</a>
+      <a class="hero-link" href="accessibility.html">Accessibility</a>
+    </div>
+  </div>
+</section>
+
+<div class="svc-sections">
+
+  <section class="svc-section">
+    <div class="svc-content">
+      <div class="section-eyebrow"><span>EHR PROGRAM</span></div>
+      <div>
+        <h2 class="svc-heading">Emergency Home Repair</h2>
+        <p class="svc-sub">Providing immediate attention to serious housing conditions</p>
+      </div>
+      <p class="svc-para">ASSIST's Emergency Home Repair program provides immediate attention to serious housing conditions that affect the health, safety or well being of low income residents.</p>
+      <a href="emergency-home-repair.html" class="btn-outline" style="align-self:flex-start;">Learn More</a>
+      <div class="stats-row">
+        <div><div class="stat-num">3,200+</div><div class="stat-label">Projects</div></div>
+        <div><div class="stat-num">10</div><div class="stat-label">Years</div></div>
+        <div><div class="stat-num">500,000</div><div class="stat-label">People Helped</div></div>
+      </div>
+    </div>
+    <div class="svc-img"><img src="https://drive.google.com/thumbnail?id=1Cjkyto2a7cDKn_LyXrJ5mg41_BnyNu_I&sz=w1200" alt="Emergency Home Repair"/></div>
+  </section>
+
+  <section class="svc-section">
+    <div class="svc-content">
+      <div class="section-eyebrow"><span>DESIGN FOR ALL</span></div>
+      <div>
+        <h2 class="svc-heading">Accessibility</h2>
+        <p class="svc-sub">Aging in Place Program</p>
+      </div>
+      <p class="svc-para">Preventative safety improvements help you stay in your home and reduce injury risk as you age, with a focus on fall prevention.</p>
+      <a href="accessibility.html" class="btn-outline" style="align-self:flex-start;">Learn More</a>
+      <div class="stats-row">
+        <div><div class="stat-num">150+</div><div class="stat-label">Projects</div></div>
+        <div><div class="stat-num">18</div><div class="stat-label">Years</div></div>
+      </div>
+    </div>
+    <div class="svc-img"><img src="https://drive.google.com/thumbnail?id=1IKAWu5mjJSYXNf1DnkaGuhYrit_BAis0&sz=w1200" alt="Accessibility"/></div>
+  </section>
+
+  <section class="svc-section">
+    <div class="svc-content">
+      <div class="section-eyebrow"><span>INTENTIONAL DIGNITY</span></div>
+      <div>
+        <h2 class="svc-heading">Community Design</h2>
+        <p class="svc-sub">Community Planning &amp; Development</p>
+      </div>
+      <p class="svc-para">An architecture and design practice committed to creating environments that respond thoughtfully to place, climate, and human experience.</p>
+      <a href="community-design.html" class="btn-outline" style="align-self:flex-start;">Explore Projects</a>
+      <div class="stats-row">
+        <div><div class="stat-num">150+</div><div class="stat-label">Projects</div></div>
+        <div><div class="stat-num">18</div><div class="stat-label">Years</div></div>
+      </div>
+    </div>
+    <div class="svc-img"><img src="https://drive.google.com/thumbnail?id=1m78xXr44c-27ScDH1nMad7W2XYDRCPz_&sz=w1200" alt="Community Design"/></div>
+  </section>
+
+</div>
+
+<script>renderFooter();</script>
+</body>
+</html>

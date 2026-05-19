@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-45CZGQCL2F"></script>
+  <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-45CZGQCL2F');</script>
+  <meta charset="UTF-8"/><meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+  <link rel="icon" type="image/svg+xml" href="logo.svg">
+  <title>Community Design — ASSIST Community Design Center</title>
+  <link rel="stylesheet" href="shared.css"/>
+  <style>
+    .page-hero { display:grid; grid-template-columns:1fr 1fr; max-width:1440px; margin:0 auto; padding-left:72px; min-height:514px; align-items:center; }
+    .hero-content { padding:80px 64px 80px 0; display:flex; flex-direction:column; gap:20px; }
+    .page-heading { font-size:48px; font-weight:700; line-height:56px; letter-spacing:-1px; color:var(--graphite); }
+    .page-sub { font-size:12px; font-weight:600; letter-spacing:.96px; text-transform:uppercase; color:var(--charcoal); margin-top:6px; }
+    .page-para { font-size:18px; line-height:32px; color:var(--charcoal); opacity:.7; width:557px; max-width:100%; }
+    .hero-img { overflow:hidden; align-self:stretch; }
+    .hero-img img { width:100%; height:100%; object-fit:cover; display:block; }
+    .detail-wrap { max-width:1296px; margin:0 auto; padding:0 72px 80px; }
+    .detail-block { padding:32px 0; border-bottom:1px solid var(--assist-blue); }
+    .detail-block:last-child { border-bottom:none; }
+    .detail-title { font-size:16px; font-weight:700; color:var(--charcoal); margin-bottom:20px; }
+    .prose { font-size:16px; line-height:26px; color:var(--charcoal); letter-spacing:.4px; }
+    .prose p + p { margin-top:14px; }
+    .services-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:24px; }
+    .service-card { background:var(--sand); border-radius:8px; padding:24px; }
+    .service-card h3 { font-size:16px; font-weight:700; color:var(--graphite); margin-bottom:10px; }
+    .service-card p { font-size:15px; line-height:24px; color:var(--charcoal); opacity:.8; }
+    @media(max-width:900px) {
+      .page-hero { grid-template-columns:1fr; padding:0; }
+      .hero-content { padding:48px 24px; max-width:100%; }
+      .hero-img { min-height:260px; }
+      .page-para { width:100%; }
+      .detail-wrap { padding:0 24px 48px; }
+      .services-grid { grid-template-columns:1fr; }
+    }
+  </style>
+</head>
+<body>
+<script src="shared.js"></script>
+<script>renderNav('Services');</script>
+
+<section class="page-hero">
+  <div class="hero-content">
+    <div class="section-eyebrow"><span>INTENTIONAL DIGNITY</span></div>
+    <div>
+      <h1 class="page-heading">Community Design</h1>
+      <p class="page-sub">Community Planning &amp; Development</p>
+    </div>
+    <p class="page-para">An architecture and design practice committed to creating environments that respond thoughtfully to place, climate, and human experience. We work alongside communities to design spaces that reflect their values and serve their needs.</p>
+    <div class="stats-row" style="margin-top:8px;">
+      <div><div class="stat-num">150+</div><div class="stat-label">Projects</div></div>
+      <div><div class="stat-num">18</div><div class="stat-label">Years</div></div>
+    </div>
+  </div>
+  <div class="hero-img">
+    <img src="https://drive.google.com/thumbnail?id=1DVtF9yMoslitGtNCVnGjggwD_ULTx3Cz&sz=w1200" alt="Community Design"/>
+  </div>
+</section>
+
+<div class="detail-wrap">
+  <div class="detail-block">
+    <div class="detail-title">What We Do</div>
+    <p class="prose">ASSIST's Community Design program partners with nonprofit organizations, community groups, and local governments to provide high-quality architectural and planning services to those who would otherwise not have access to professional design assistance.</p>
+  </div>
+  <div class="detail-block">
+    <div class="detail-title">Our Services</div>
+    <div class="services-grid">
+      <div class="service-card">
+        <h3>Architectural Design</h3>
+        <p>Full architectural services for residential, commercial, and community buildings — from schematic design through construction documents.</p>
+      </div>
+      <div class="service-card">
+        <h3>Community Planning</h3>
+        <p>Master planning, site analysis, and community engagement processes that center resident voices in shaping the built environment.</p>
+      </div>
+      <div class="service-card">
+        <h3>Multi-Family Housing</h3>
+        <p>Design for affordable and mixed-income housing that prioritizes dignity, community, and long-term livability for residents.</p>
+      </div>
+    </div>
+  </div>
+  <div class="detail-block">
+    <div class="detail-title">Who We Work With</div>
+    <p class="prose">We partner with nonprofit housing organizations, community development corporations, faith communities, local governments, and other mission-driven organizations seeking thoughtful design services at accessible rates.</p>
+    <p class="prose" style="margin-top:14px;">If you have a project that could benefit from professional design support, we'd love to hear from you.</p>
+    <a href="mailto:info@assistutah.org?subject=Advocate Interest" class="btn-outline" style="margin-top:24px;display:inline-flex;">Get in touch</a>
+  </div>
+</div>
+
+<div class="work-strip">
+  <div class="work-strip-inner">
+    <div class="work-strip-header">
+      <h2>Work</h2>
+      <a href="work.html" class="btn-outline" style="font-size:14px;padding:9px 18px;">View All Projects</a>
+    </div>
+    <div class="work-strip-divider"></div>
+    <div id="cdPortfolio" style="display:flex;flex-direction:column;"></div>
+  </div>
+</div>
+
+<script src="projects.js"></script>
+<script>
+  portfolioBuildGrid({ containerId:'cdPortfolio', filter:'Community Design', namespace:'cd' });
+  let cdLastCols = portfolioGetCols();
+  window.addEventListener('resize', () => {
+    const c = portfolioGetCols();
+    if (c !== cdLastCols) { cdLastCols = c; portfolioBuildGrid({ containerId:'cdPortfolio', filter:'Community Design', namespace:'cd' }); }
+  });
+</script>
+
+<script>renderFooter();</script>
+</body>
+</html>

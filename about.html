@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-45CZGQCL2F"></script>
+  <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-45CZGQCL2F');</script>
+  <meta charset="UTF-8"/><meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+  <link rel="icon" type="image/svg+xml" href="logo.svg">
+  <title>About — ASSIST Community Design Center</title>
+  <link rel="stylesheet" href="shared.css"/>
+  <style>
+    .about-hero { display:grid; grid-template-columns:1fr 1fr; max-width:1440px; margin:0 auto; padding-left:72px; min-height:560px; border-bottom:1px solid var(--sand); }
+    .about-hero-content { display:flex; flex-direction:column; justify-content:center; gap:24px; padding:80px 64px 80px 0; }
+    .about-heading { font-size:48px; font-weight:700; line-height:56px; letter-spacing:-1px; color:var(--graphite); }
+    .about-sub { font-size:12px; font-weight:600; letter-spacing:.96px; text-transform:uppercase; color:var(--charcoal); margin-top:8px; }
+    .about-para { font-size:18px; line-height:32px; color:var(--charcoal); opacity:.7; }
+    .about-hero-img { overflow:hidden; display:flex; flex-direction:column; }
+    .about-hero-img img { width:100%; flex:1; object-fit:cover; object-position:center top; display:block; border-radius:6px 0 0 6px; }
+    .img-caption { font-size:12px; color:var(--bark); padding:8px 12px 0; margin:0; }
+    .values-section { max-width:1296px; margin:0 auto; padding:80px 72px; }
+    .values-header { margin-bottom:48px; }
+    .values-eyebrow { font-size:12px; font-weight:500; letter-spacing:1.2px; text-transform:uppercase; color:var(--charcoal); }
+    .values-heading { font-size:48px; font-weight:700; letter-spacing:-1px; color:var(--graphite); margin-top:12px; }
+    .value-row { border-bottom:1px solid var(--assist-blue); padding:20px 0 20px 24px; }
+    .value-title { font-size:16px; font-weight:700; color:var(--charcoal); margin-bottom:8px; }
+    .value-text { font-size:16px; line-height:26px; color:var(--charcoal); letter-spacing:.4px; max-width:420px; }
+    .banner { position:relative; overflow:hidden; min-height:560px; display:flex; align-items:center; }
+    .banner-bg { position:absolute; inset:0; background:url('https://drive.google.com/thumbnail?id=1OvcEzMJsRKWH3vQjahQdSzow-VJLVNyM&sz=w1200') center/cover no-repeat; }
+    .banner-overlay { position:absolute; inset:0; background:rgba(40,81,96,.55); }
+    .banner-text { position:relative; z-index:2; padding:60px 72px; font-size:clamp(72px,10vw,140px); font-weight:700; line-height:.95; letter-spacing:-3px; color:var(--daylight); font-family:'Neue Kabel',sans-serif; }
+    .timeline-section { max-width:1296px; margin:0 auto; padding:80px 72px; }
+    .timeline-eyebrow { font-size:12px; font-weight:500; letter-spacing:1.2px; text-transform:uppercase; color:var(--charcoal); margin-bottom:32px; }
+    .timeline-inner { display:grid; grid-template-columns:1fr; gap:0; max-width:680px; }
+    .timeline-item { display:flex; gap:16px; padding:20px 0; border-bottom:1px solid var(--sand); align-items:baseline; }
+    .timeline-item:last-child { border-bottom:none; }
+    .timeline-year { font-size:28px; font-weight:700; color:var(--ember); min-width:72px; line-height:1; flex-shrink:0; }
+    .timeline-desc { font-size:14px; font-weight:500; color:var(--charcoal); line-height:20px; }
+    @media(max-width:900px) {
+      .about-hero { grid-template-columns:1fr; padding:0; }
+      .about-hero-content { padding:48px 24px; }
+      .about-hero-img { min-height:280px; }
+      .about-hero-img img { border-radius:0; }
+      .values-section, .timeline-section { padding:48px 24px; }
+      .banner-text { font-size:clamp(48px,10vw,80px); padding:48px 24px; }
+    }
+  </style>
+</head>
+<body>
+<script src="shared.js"></script>
+<script>renderNav('About');</script>
+
+<section class="about-hero">
+  <div class="about-hero-content">
+    <div class="section-eyebrow"><span>ABOUT</span></div>
+    <div>
+      <h1 class="about-heading">Our origin story</h1>
+      <p class="about-sub">50 years of community design looking forward to the next 50</p>
+    </div>
+    <p class="about-para">ASSIST Inc is an independent nonprofit Community Design Center founded in 1969 by the Graduate School of Architecture at the University of Utah and the Utah Society of the American Institute of Architects. For the past 50 years ASSIST has been providing architectural design, community planning and development assistance to nonprofit and community groups; housing repair for low income households; and accessibility design assistance to people with disabilities.</p>
+    <div class="stats-row">
+      <div><div class="stat-num">1969</div><div class="stat-label">Founded</div></div>
+      <div><div class="stat-num">50</div><div class="stat-label">Years</div></div>
+    </div>
+  </div>
+  <div class="about-hero-img">
+    <img src="https://drive.google.com/thumbnail?id=13wEbnDpd_4-dNyKtxgOnd8lPlKFhKyeq&sz=w1200" alt="ASSIST history"/>
+    <p class="img-caption">Assist Slide Film; 1974</p>
+  </div>
+</section>
+
+<div class="values-section">
+  <div class="values-header">
+    <div class="values-eyebrow">AT OUR CORE</div>
+    <h2 class="values-heading">Our values</h2>
+  </div>
+  <div class="value-row"><div class="value-title">Community &amp; Connection</div><p class="value-text">Elevating, connecting, and stabilizing communities by providing critical home services &amp; design. Elevating communities by design.</p></div>
+  <div class="value-row"><div class="value-title">Accessibility</div><p class="value-text">We are approachable and provide access to good design resources to traditionally underserved communities.</p></div>
+  <div class="value-row"><div class="value-title">Quality of Work</div><p class="value-text">Personal client relationships. Exhibiting empathy, compassion, and integrity.</p></div>
+</div>
+
+<div class="banner">
+  <div class="banner-bg"></div>
+  <div class="banner-overlay"></div>
+  <div class="banner-text">Elevating<br>Communities<br>by Design</div>
+</div>
+
+<div class="timeline-section">
+  <div class="timeline-eyebrow">OUR TIMELINE</div>
+  <div class="timeline-inner">
+    <div class="timeline-item"><span class="timeline-year">1969</span><span class="timeline-desc">Started by Carl Inoway in the corner of the Utah AIA office</span></div>
+    <div class="timeline-item"><span class="timeline-year">1970</span><span class="timeline-desc">Incorporated 11/20/1970 as 501(c)(3) Utah Corporation</span></div>
+    <div class="timeline-item"><span class="timeline-year">1971</span><span class="timeline-desc">Received Model Cities grant of $22,000 and moved to 218 E 500 S</span></div>
+    <div class="timeline-item"><span class="timeline-year">1972</span><span class="timeline-desc">Surveyed central city residents and started Emergency Home Repair program</span></div>
+    <div class="timeline-item"><span class="timeline-year">1975</span><span class="timeline-desc">Published Inside-Out-Renewal study and models</span></div>
+    <div class="timeline-item"><span class="timeline-year">1980</span><span class="timeline-desc">Published Gateway study and West South Temple A Mixed-Use Development District study and model</span></div>
+    <div class="timeline-item"><span class="timeline-year">1982</span><span class="timeline-desc">Published Housing in Different Contexts</span></div>
+    <div class="timeline-item"><span class="timeline-year">1985</span><span class="timeline-desc">Published Rural Design and Jefferson Historical District study (Ogden)</span></div>
+    <div class="timeline-item"><span class="timeline-year">1986</span><span class="timeline-desc">Published Sandy Historic District study and model</span></div>
+    <div class="timeline-item"><span class="timeline-year">1987</span><span class="timeline-desc">Co-Founded Urban Design Coalition. Printed Poor Choices Threaten poster</span></div>
+    <div class="timeline-item"><span class="timeline-year">1988</span><span class="timeline-desc">Participated in AIA R/UDAT (regional/urban design assistance team)</span></div>
+    <div class="timeline-item"><span class="timeline-year">1990</span><span class="timeline-desc">Set up Community Development Corporation of Utah</span></div>
+    <div class="timeline-item"><span class="timeline-year">1992</span><span class="timeline-desc">Hosted Association for Community Design annual national meeting</span></div>
+    <div class="timeline-item"><span class="timeline-year">1993</span><span class="timeline-desc">Published and distributed to all Utah legislators Our Transportation Future</span></div>
+    <div class="timeline-item"><span class="timeline-year">1994</span><span class="timeline-desc">Co-sponsored New Utah Housing Competition</span></div>
+    <div class="timeline-item"><span class="timeline-year">1995</span><span class="timeline-desc">Put on Future Moves Conference at Salt Palace</span></div>
+    <div class="timeline-item"><span class="timeline-year">1998</span><span class="timeline-desc">Participated in original Envision Utah Scenarios Committee. Published ASSIST Guidebook to the Accessible Home, Ed. 1</span></div>
+    <div class="timeline-item"><span class="timeline-year">2005</span><span class="timeline-desc">ASSIST Guidebook Ed. 3 published. Distributed 10,000 Visiting New Heights visitablity posters.</span></div>
+    <div class="timeline-item"><span class="timeline-year">2008</span><span class="timeline-desc">Published IDEAS for Home Improvement Energy, Water &amp; Access</span></div>
+    <div class="timeline-item"><span class="timeline-year">2012</span><span class="timeline-desc">Hosted Association for Community Design annual national meeting</span></div>
+    <div class="timeline-item"><span class="timeline-year">2017</span><span class="timeline-desc">First Assist Architectural project completed for Phoenix Services</span></div>
+    <div class="timeline-item"><span class="timeline-year">2020</span><span class="timeline-desc">Aging in Place contract with Salt Lake County</span></div>
+    <div class="timeline-item"><span class="timeline-year">2021</span><span class="timeline-desc">Entrada Entertainment Stage designed and built by Assist Team</span></div>
+    <div class="timeline-item"><span class="timeline-year">2022</span><span class="timeline-desc">Utah Aids Foundation Legacy Health Clinic remodel commenced</span></div>
+    <div class="timeline-item"><span class="timeline-year">2023</span><span class="timeline-desc">Trinity AME basement remodel completed</span></div>
+    <div class="timeline-item"><span class="timeline-year">2024</span><span class="timeline-desc">Community Design project Davis Behavioral Health awarded to Assist</span></div>
+  </div>
+</div>
+
+<script>renderFooter();</script>
+</body>
+</html>
